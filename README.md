@@ -1,4 +1,5 @@
 # T-FLIPFLOP-POSEDGE
+# Date :  26/11/2024 
 
 **AIM:**
 
@@ -28,36 +29,48 @@ From the above characteristic table, we can directly write the next state equati
 
 **Procedure**
 
-/* write all the steps invloved */
+1.Type the program in Quartus software.
 
-**PROGRAM**<br>
-module exp9(T,clk,Q,Qbar);<br>
-input T,clk;<br>
-output reg Q;<br>
-output reg Qbar;<br>
-initial Q=0;<br>
-initial Qbar=1;<br>
-always @(posedge clk)<br>
-begin<br> 
-Q=(T&(~Q))|((~T)&Q);<br>
-Qbar=~Q;<br>
-end<br>
-endmodule<br>
+2.Compile and run the program.
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming.
+3.Generate the RTL schematic and save the logic diagram.
 
-Developed by:Esakkindhar A
+4.Create nodes for inputs and outputs to generate the timing diagram.
 
-RegisterNumber:24001907
-*/
+5.For different input combinations generate the timing diagram.
 
-**RTL LOGIC FOR FLIPFLOPS**<br>
-![390978992-d38b4675-c9ee-4ea5-b780-9761dc1f6aa7](https://github.com/user-attachments/assets/0d711046-33ae-493e-8302-75ace5c7016d)
+**PROGRAM**
+
+Program for flipflops and verify its truth table in quartus using Verilog programming.
+```
+module t_ff_ (t, clk, rst, q);
+  input t, clk, rst;
+  output reg q;
+
+  always @(posedge clk or posedge rst) 
+begin
+    if (rst)
+      q <= 0; 
+    else if (t==0)
+      q <= q; 
+     else
+        q<=~q;
+  end
+endmodule
+
+```
+# Developed by:Esakkindhar A
+# RegisterNumber: 24001907
 
 
-**TIMING DIGRAMS FOR FLIP FLOPS**<br>
-![390979025-37a3cdff-6dfe-43dd-abee-3622a8bc0179](https://github.com/user-attachments/assets/9237a384-ccf0-4b57-8791-02ec6cc2db54)
+**RTL LOGIC FOR FLIPFLOPS**
+![image](https://github.com/user-attachments/assets/d67b352f-886d-4f30-a33d-495ad2fc4f6f)
 
 
-**RESULTS**<br>
-To implement T flipflop using verilog and validating their functionality using their functional tables are verified.
+**TIMING DIGRAMS FOR FLIP FLOPS**
+![image](https://github.com/user-attachments/assets/8c068a66-dfa8-4bd2-8d96-1e848d0c4715)
+
+
+
+**RESULTS**
+Implementation of T flipflop using Verilog is successful
